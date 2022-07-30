@@ -1,0 +1,17 @@
+.align center{
+    width: 600px;
+    margin: auto;
+}
+
+.input-style{
+    box-shadow: 0 8px 10px -3px rgb(0 0 0 / 10%), 0 4px 6px -2px rgb(0 0 0 / 10%), 0 -8px 12px 0 rgb(0 0 0 / 5%), 0 -2px 3px -2px rgb(0 0 0 / 1%);
+    border-radius: 8px;
+    border: none;
+    display: block;
+    height: 0.1rem;
+    padding: 1.75rem 1.75rem 1.75rem 3rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    transition: box-shadow .2s ease;
+    width: 100%;
+}
