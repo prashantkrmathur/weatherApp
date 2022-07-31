@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "./SingleDay.css";
 
 const SingleDay = (props) => {
-  const { day, temp, cloud } = props;
+  const { day, temp, cloud, key } = props;
+console.log("props",props);
   return (
     <div className='DailyForecastDiv'>
-      <input type="radio" name="active_day" value="0" checked="checked" class="DailyForecastInput"></input>
-      <div className='ForeCast'>
+      <div className='ForeCast' key={key}>
         <p>{day}</p>
-        <p><span>{`${temp.min}`}<sup>° &nbsp;</sup></span>
-          <span>{`${temp.max}`}<sup>° &nbsp;</sup></span></p>
+        <p><span>{(`${temp.min}`).split(".")[0]}<sup>° &nbsp;</sup></span>
+          <span>{(`${temp.max}`).split(".")[0]}<sup>° &nbsp;</sup></span></p>
         <img ></img>
         <p>{cloud}</p>
 

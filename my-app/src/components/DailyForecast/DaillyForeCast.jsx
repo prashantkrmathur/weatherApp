@@ -1,4 +1,5 @@
 import axios from 'axios';
+import moment from 'moment';
 import React, { useEffect, useState } from 'react'
 import SingleDay from './SingleDay';
 import "./DailyForeCast.css"
@@ -6,7 +7,7 @@ import "./DailyForeCast.css"
 const DailyForeCast = (props) => {
     const { data } = props;
     const [weekData, setWeekData] = useState([]);
-    console.log("weekData", weekData);
+
     useEffect(() => {     
         if (data && data.coord) {
            getWeekDataAPI(data.coord.lat, data.coord.lon)
@@ -21,8 +22,12 @@ const DailyForeCast = (props) => {
     };
     return (
         <div className='main-box' >
-            {weekData && weekData.map((e) => {
+            {weekData && weekData.map((e,id) => {
+                console.log('====================================');
+                console.log(moment(e.sunrise).format('ddd'));
+                console.log('====================================');
                 return <SingleDay
+                    key={id}
                     day={e.dt}
                     temp={e.temp}
                     cloud={e.weather[0].main}
