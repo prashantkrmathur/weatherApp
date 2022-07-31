@@ -3,10 +3,18 @@ import moment from 'moment';
 import React, { useEffect, useState } from 'react'
 import SingleDay from './SingleDay';
 import "./DailyForeCast.css"
+import HourlyChart from '../Chart.js/HourlyChart';
 
 const DailyForeCast = (props) => {
     const { data } = props;
     const [weekData, setWeekData] = useState([]);
+    const [hourlyData, setHourlyData] = useState();
+
+    let arr = ['Mon', "Tue", "Wed", "Thu", "Fri", "Sat", "Sun", 'Mon', "Tue", "Wed", "Thu", "Fri"]
+    let date = new Date();
+    let day = date.getDay();
+    var currDay;
+    currDay = arr.slice(day, day + 8);
 
     useEffect(() => {     
         if (data && data.coord) {
@@ -15,25 +23,32 @@ const DailyForeCast = (props) => {
     }, [data]);
 
     const getWeekDataAPI = async (latitude, longitude) => {
-        var response = await axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=minutely,alerts&units=metric&appid=874af10f7b06699f85fb8639d977e601`);
+        const response = await axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=minutely,alerts&units=metric&appid=874af10f7b06699f85fb8639d977e601`);
+        const { data } = response;
+        setHourlyData(data);
         if (response && response.data && response.data.daily) {
             setWeekData(response.data.daily);
         }
     };
     return (
+        <div>
         <div className='main-box' >
             {weekData && weekData.map((e,id) => {
-                console.log('====================================');
-                console.log(moment(e.sunrise).format('ddd'));
-                console.log('====================================');
                 return <SingleDay
                     key={id}
-                    day={e.dt}
+                    id={id}
+                    day={currDay[id]}
                     temp={e.temp}
                     cloud={e.weather[0].main}
                />
             }) }
-       </div>
+            </div>
+            <div style={{marginaTop:"10px"}}>
+                {hourlyData && <HourlyChart
+                    data={hourlyData.hourly}
+                />}
+            </div>
+        </div>
   )
 }
 export default DailyForeCast
