@@ -43,11 +43,11 @@ const DailyForeCast = (props) => {
                />
             }) }
             </div>
-            <div style={{marginaTop:"10px"}}>
-                {hourlyData && <HourlyChart
+            {hourlyData &&<div className='chart-style'>
+                <HourlyChart
                     data={hourlyData.hourly}
-                />}
-            </div>
+                />
+            </div>}
         </div>
   )
 }
