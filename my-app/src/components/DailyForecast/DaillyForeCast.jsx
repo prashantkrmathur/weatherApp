@@ -10,6 +10,8 @@ const DailyForeCast = (props) => {
     const [weekData, setWeekData] = useState([]);
     const [hourlyData, setHourlyData] = useState();
 
+    console.log("hourlyData", hourlyData);
+    
     let arr = ['Mon', "Tue", "Wed", "Thu", "Fri", "Sat", "Sun", 'Mon', "Tue", "Wed", "Thu", "Fri"]
     let date = new Date();
     let day = date.getDay();
@@ -43,10 +45,24 @@ const DailyForeCast = (props) => {
                />
             }) }
             </div>
-            {hourlyData &&<div className='chart-style'>
+            {hourlyData && <div className='chart-style'>
+                <div className='currentTempDiv'>
+                    <h1 className='chart-current-temp'>{hourlyData.current.temp}</h1>
+                    <img className='cloud-img' src='https://weatherapp-swanand.netlify.app/img/cloudy.ac49ed24.svg' alt='cloud'></img>
+                </div>
                 <HourlyChart
                     data={hourlyData.hourly}
                 />
+                <div className='otherForecastData'>
+                    <div className='other-data'>
+                        <span className='bold'>Pressure</span>
+                        <span >{hourlyData.current.pressure } hpa</span>
+                    </div>
+                    <div className='other-data'>
+                        <span className='bold'>Humidity</span>
+                        <span>{hourlyData.current.humidity } %</span>
+                    </div>
+                </div>
             </div>}
         </div>
   )

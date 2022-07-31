@@ -7,8 +7,12 @@ import "./Dashboard.css";
 const Dashboard = (props) => {
   const [initialSearch, setIntialSearch] = useState('Patna');
   const [data, setData] = useState([]);
-  const [text, setText] = useState('');
+  const [text, setText] = useState('Patna');
 
+  useEffect(() => {
+    getWeatherDataAPI(initialSearch);
+    setText(initialSearch);
+  }, [initialSearch]);
   const handleChange = (e) => {
     e.preventDefault();
     setText(e.target.value);
@@ -22,8 +26,8 @@ const Dashboard = (props) => {
     }
   }
   const handleSearch = () => {
-    getWeatherDataAPI(initialSearch);
-    setIntialSearch( )
+    getWeatherDataAPI(text);
+    setIntialSearch('')
   }
 
 
@@ -31,7 +35,7 @@ const Dashboard = (props) => {
     <div className='main-container'>
       <div >
         <span className='map-logo'> <i className="fa fa-map-marker" style={{ fontSize: "36px" }}></i></span>
-        <input onChange={(e) => handleChange(e)} type="text" className='input-style'
+        <input onChange={(e) => handleChange(e)}  type="text" className='input-style'
           placeholder='Enter the City Name'
         />
         <span className='search-logo' onClick={handleSearch} ><i className="fa fa-search"></i></span>
