@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import SingleDay from './SingleDay';
+import "./DailyForeCast.css"
 
 const DailyForeCast = (props) => {
     const { data } = props;
@@ -19,7 +20,7 @@ const DailyForeCast = (props) => {
         }
     };
     return (
-        <div >
+        <div className='main-box' >
             {weekData && weekData.map((e) => {
                 return <SingleDay
                     day={e.dt}

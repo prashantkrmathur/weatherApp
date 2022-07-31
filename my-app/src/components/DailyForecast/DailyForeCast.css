@@ -1,0 +1,5 @@
+.main-box {
+    display: flex;
+    width: 771px;
+    overflow: auto;
+}
