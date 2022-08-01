@@ -11,7 +11,7 @@ const SingleDay = (props) => {
         <div>{day}</div>
         <div><span>{(`${temp.min}`).split(".")[0]}<sup>° &nbsp;</sup></span>
           <span>{(`${temp.max}`).split(".")[0]}<sup>° &nbsp;</sup></span></div>
-          <div><img></img></div>
+        <img src='https://weatherapp-swanand.netlify.app/img/cloudy.ac49ed24.svg' alt='cloud'></img>
         <div>{cloud}</div>
       </div>
     </div>

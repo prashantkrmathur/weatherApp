@@ -71,7 +71,7 @@ const DailyForeCast = (props) => {
                         <span>{new Date(Number(hourlyData.current.sunset) * 1000).toLocaleTimeString()}</span>
                     </div>
                 </div>
-                <div style={{ marginLeft: "20px" }}>
+                <div className='bottom-img'>
                     <img style={{ Width: "100%" }} src="https://i.ibb.co/KX3jkQp/sunriseandset.png" alt="sunriseandset" />
                 </div>
             </div>}
