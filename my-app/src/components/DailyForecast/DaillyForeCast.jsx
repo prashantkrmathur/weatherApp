@@ -67,7 +67,7 @@ const DailyForeCast = (props) => {
                         <span>{new Date(Number(hourlyData.current.sunrise) * 1000).toLocaleTimeString()}</span>
                     </div>
                     <div className='sunrise'>
-                        <span className='bold'>Sunrise</span>
+                        <span className='bold'>Sunset</span>
                         <span>{new Date(Number(hourlyData.current.sunset) * 1000).toLocaleTimeString()}</span>
                     </div>
                 </div>
