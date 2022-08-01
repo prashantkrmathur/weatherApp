@@ -6,7 +6,6 @@ const initialState = {
 }
 
 const reducer = (state = initialState, { type, payload }) => {
-    console.log("payload",payload);
     switch (type) {
         case GET_WEATHER_DATA_REQUEST:
             return {
